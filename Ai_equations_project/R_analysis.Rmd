@@ -1,0 +1,109 @@
+---
+title: "analyse_dataset"
+author: "Thomas Curry"
+date: "2024-11-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readr)
+loans = read.csv("loan_data_p.csv")
+```
+
+```{r}
+library(corrplot)
+loan_cor= cor(loans)
+corrplot(loan_cor)
+```
+
+```{r}
+n=mean(loans$person_income)+ 3 * sd(loans$person_income)
+length(loans$person_income)
+mask = loans$person_income < n
+m = loans[mask,]
+dim(m)[1]
+```
+
+```{r}
+sigmo_fun <- function(X, w, b)
+{
+  z = sum(X* w, b)
+  return(1/(1+exp(-1 *z)))
+}
+
+stand_fun <- function(X)
+{
+  count = 0
+  for (i in colnames(X)){
+    count = count+1
+    X[i] = (X[i] - mean(X[i])) / sd(X[i])
+    }
+  return(X)
+}
+
+```
+
+```{r}
+params = read.csv("outLoanlog6.csv")
+trained = loans[1:36000,]
+
+
+
+st_trained = stand_fun(trained) 
+results = c(0,0,0,0) 
+# 
+# for (i in 1:36000){
+#   guess = sigmo_fun(st_trained[i,1:13],params$m, params$c[1])
+#   if (trained[i,14] == 1 & guess >= 0.5){ 
+#     results[1] = results[1] + 1 }
+#   else if (trained[i,14] == 1 & guess < 0.5){
+#     results[2] = results[2] + 1 }
+#   else if (trained[i,14] == 0 & guess < 0.5){
+#     results[3] = results[3] + 1 }
+#   else if (trained[i,14] == 0 & guess >= 0.5){ 
+#     results[4] = results[4] + 1 }
+#   }
+# results
+# sum(results)
+# results[1]/(results[1] + results[2])
+# (results[1] + results[3])/ sum(results)
+```
+
+```{r}
+sum(trained[,14])/ 36000
+(results[1]+results[4]) /36000
+
+```
+
+```{r}
+test = loans[36001:45000,]
+results_test = c(0,0,0,0)
+for (i in 1:9000){
+  guess = sigmo_fun(test[i,1:13],params$m, params$c[1])
+  if (test[i,14] == 1 & guess >= 0.5){
+    results_test[1] = results_test[1] + 1
+  }
+  else if (test[i,14] == 1 & guess < 0.5){
+    results_test[2] = results_test[2] + 1
+  }
+  else if (test[i,14] == 0 & guess < 0.5){
+    results_test[3] = results_test[3] + 1
+  }
+  else if (test[i,14] == 0 & guess >= 0.5){
+    results_test[4] = results_test[4] + 1
+  }
+}
+results_test
+sum(results_test)
+results_test[1]/(results_test[1] + results_test[2])
+(results_test[1] + results_test[3])/ sum(results_test)
+```
+
+```{r}
+sum(test[,14]) / 9000
+(results[1]+results[4]) /9000
+```

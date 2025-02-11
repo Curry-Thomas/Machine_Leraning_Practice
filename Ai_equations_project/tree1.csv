@@ -1,0 +1,13 @@
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+previous_loan_defaults_on_file,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0.5223333333333333,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+loan_percent_income,,,,,,,,,,,,,,,,person_age,,,,,,,,,,,,,,,
+0.1546475924633636,,,,,,,,,,,,,,,,27.59396936821953,,,,,,,,,,,,,,,
+loan_int_rate,,,,,,,,loan_percent_income,,,,,,,,person_age,,,,,,,,person_age,,,,,,,
+11.20648902195609,,,,,,,,0.24761984392419176,,,,,,,,24.04691272852708,,,,,,,,33.30036071032186,,,,,,,
+person_income,,,,loan_int_rate,,,,loan_int_rate,,,,person_home_ownership,,,,person_age,,,,person_age,,,,person_age,,,,person_age,,,
+89144.47644169547,,,,14.048503205836836,,,,11.87235788937038,,,,1.3157085766984322,,,,22.851154833190762,,,,25.877346137058055,,,,30.04366530436653,,,,39.2168815943728,,,
+person_income,,loan_int_rate,,person_income,,person_home_ownership,,loan_amnt,,loan_int_rate,,loan_percent_income,,loan_int_rate,,person_age,,person_age,,person_gender,,person_age,,person_age,,person_age,,person_age,,person_age,
+58540.899420289854,,8.835315095261357,,88665.29299103505,,1.4407926534557758,,11918.476555023923,,14.633627932351338,,0.3121896907216495,,11.791437198067634,,21.75565081839439,,23.483138489208635,,0.4565811032222829,,26.461286804798256,,28.921297894373488,,31.899543378995435,,36.02508960573477,,45.25423728813559,
+Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target,Target
+0,0,0,0,0,0,1,1,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
